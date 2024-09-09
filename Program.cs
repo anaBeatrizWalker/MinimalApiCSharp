@@ -1,9 +1,14 @@
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalApiCSharp.Domain.DTOs;
+using MinimalApiCSharp.Domain.Services;
 using MinimalApiCSharp.Infra.DB;
+using MinimalApiCSharp.Infra.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IAdministratorService, AdministratorService>();
 
 builder.Services.AddDbContext<DataBaseContext>(options => {
         options.UseMySql(builder.Configuration.GetConnectionString("mysql"), 
@@ -14,8 +19,8 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapPost("/login", (LoginDTO loginDTO) => {
-    if(loginDTO.Email == "adm@teste.com" && loginDTO.Password == "123456"){
+app.MapPost("/login", ([FromBody] LoginDTO loginDTO, IAdministratorService administratorService) => {
+    if(administratorService.Login(loginDTO) != null){
         return Results.Ok("Login feito com sucesso!");
     }else {
         return Results.Unauthorized();
