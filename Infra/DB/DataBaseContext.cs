@@ -17,6 +17,18 @@ namespace MinimalApiCSharp.Infra.DB
 
         public DbSet<Administrator> Administrators {get; set;} = default!;
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Administrator>().HasData(
+                new Administrator {
+                    Id = 1,
+                    Email = "administrador@adm.com",
+                    Password = "123456",
+                    Profile = "Adm"
+                }
+            );
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured){
