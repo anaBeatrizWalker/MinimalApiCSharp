@@ -41,8 +41,32 @@ app.MapPost("/adm/login", ([FromBody] LoginDTO loginDTO, IAdministratorService a
 #endregion
 
 #region Vehicles
+ValidationErrors validationDTO(VehicleDTO vehicleDTO)
+{
+    var validation = new ValidationErrors{
+      Messages = new List<string>()
+    };
+
+    if(string.IsNullOrEmpty(vehicleDTO.Name))
+        validation.Messages.Add("Provide a Name");
+
+    if(string.IsNullOrEmpty(vehicleDTO.Brand))
+        validation.Messages.Add("Provide a Brand");
+
+    if(vehicleDTO.Year < 1900)
+        validation.Messages.Add("Provide a Year >= than 1900");
+
+    return validation;
+}
+
 app.MapPost("/vehicle", ([FromBody] VehicleDTO vehicleDTO, IVehicleService vehicleService) => {
-   var vehicle = new Vehicle {
+   
+  var validation = validationDTO(vehicleDTO);
+
+  if(validation.Messages.Count > 0)
+    return Results.BadRequest(validation);
+   
+  var vehicle = new Vehicle {
     Name = vehicleDTO.Name,
     Brand = vehicleDTO.Brand,
     Year = vehicleDTO.Year,
@@ -68,9 +92,15 @@ app.MapGet("/vehicle/{id}", ([FromRoute] int id, IVehicleService vehicleService)
 }).WithTags("Vehicles");
 
 app.MapPut("/vehicle/{id}", ([FromRoute] int id, VehicleDTO vehicleDTO, IVehicleService vehicleService) => {
+  
   var vehicle = vehicleService.GetById(id);
 
   if(vehicle == null) return Results.NotFound();
+
+  var validation = validationDTO(vehicleDTO);
+
+  if(validation.Messages.Count > 0)
+    return Results.BadRequest(validation);
 
   vehicle.Name = vehicleDTO.Name;
   vehicle.Brand = vehicleDTO.Brand;
