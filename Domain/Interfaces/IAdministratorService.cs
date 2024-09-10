@@ -10,6 +10,12 @@ namespace MinimalApiCSharp.Infra.Interfaces
     public interface IAdministratorService
     {
         Administrator? Login(LoginDTO loginDTO);
+
+        Administrator Add(Administrator administrator);
+
+        List<Administrator> GetAll(int? page);
+
+        Administrator? GetById(int id);
         
     }
 }

@@ -17,6 +17,33 @@ namespace MinimalApiCSharp.Domain.Services
         {
             _context = db;
         }
+
+        public Administrator Add(Administrator administrator)
+        {
+            _context.Administrators.Add(administrator);
+            _context.SaveChanges();
+
+            return administrator;
+        }
+
+        public List<Administrator> GetAll(int? page)
+        {
+            var query =_context.Administrators.AsQueryable();
+
+            int itemsPerPage = 3;
+
+            if(page != null){
+                query = query.Skip(((int)page -1) * itemsPerPage).Take(itemsPerPage);
+            }
+
+            return query.ToList();
+        }
+
+         public Administrator? GetById(int id)
+        {
+            return _context.Administrators.Where(v => v.Id == id).FirstOrDefault();
+        }
+
         public Administrator? Login(LoginDTO loginDTO)
         {
           

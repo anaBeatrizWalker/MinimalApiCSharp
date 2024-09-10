@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalApiCSharp.Domain.DTOs;
 using MinimalApiCSharp.Domain.Entities;
+using MinimalApiCSharp.Domain.Enums;
 using MinimalApiCSharp.Domain.Interfaces;
 using MinimalApiCSharp.Domain.ModelViews;
 using MinimalApiCSharp.Domain.Services;
@@ -37,6 +38,73 @@ app.MapPost("/adm/login", ([FromBody] LoginDTO loginDTO, IAdministratorService a
     }else {
         return Results.Unauthorized();
     }
+}).WithTags("Administrators");
+
+app.MapPost("/administrator", ([FromBody] AdministratorDTO administratorDTO, IAdministratorService administratorService) => {
+  
+  var validation = new ValidationErrors{
+    Messages = new List<string>()
+  };
+
+  if(string.IsNullOrEmpty(administratorDTO.Email))
+     validation.Messages.Add("E-mail cannot be empty");
+
+  if(string.IsNullOrEmpty(administratorDTO.Password))
+     validation.Messages.Add("Password cannot be empty");
+
+  if(administratorDTO.Profile == null)
+     validation.Messages.Add("Profile cannot be empty");
+
+  if(validation.Messages.Count > 0)
+    return Results.BadRequest(validation);
+ 
+  var adm = new Administrator {
+    Email = administratorDTO.Email,
+    Password = administratorDTO.Password,
+    Profile = administratorDTO.Profile.ToString() ?? EProfile.Editor.ToString(),
+  };
+   
+  administratorService.Add(adm);
+  
+  return Results.Created($"/administrator/{adm.Id}", new AdministratorModelView{
+      Id = adm.Id,
+      Email = adm.Email,
+      Profile = adm.Profile,
+    });
+  
+}).WithTags("Administrators");
+
+app.MapGet("/administrators", ([FromQuery] int? page, IAdministratorService administratorService) => {
+
+  var adms = new List<AdministratorModelView>();
+
+  var requestedData = administratorService.GetAll(page);
+
+  foreach (var adm in requestedData)
+  {
+    adms.Add(new AdministratorModelView{
+      Id = adm.Id,
+      Email = adm.Email,
+      Profile = adm.Profile,
+    });
+  }
+   
+  return Results.Ok(adms);
+
+}).WithTags("Administrators");
+
+app.MapGet("/administrator/{id}", ([FromRoute] int id,  IAdministratorService administratorService) => {
+  
+  var administrator = administratorService.GetById(id);
+
+  if(administrator == null) return Results.NotFound();
+   
+   return Results.Ok(new AdministratorModelView{
+      Id = administrator.Id,
+      Email = administrator.Email,
+      Profile = administrator.Profile,
+    });
+
 }).WithTags("Administrators");
 #endregion
 
