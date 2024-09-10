@@ -28,7 +28,7 @@ namespace MinimalApiCSharp.Domain.Services
            _context.SaveChanges();
         }
 
-        public List<Vehicle> GetAll(int page = 1, string? name = null, string? brand = null)
+        public List<Vehicle> GetAll(int? page = 1, string? name = null, string? brand = null)
         {
             var query =_context.Vehicles.AsQueryable();
 
@@ -38,7 +38,9 @@ namespace MinimalApiCSharp.Domain.Services
 
             int itemsPerPage = 3;
 
-            query = query.Skip((page -1) * itemsPerPage).Take(itemsPerPage);
+            if(page != null){
+                query = query.Skip(((int)page -1) * itemsPerPage).Take(itemsPerPage);
+            }
 
             return query.ToList();
         }
