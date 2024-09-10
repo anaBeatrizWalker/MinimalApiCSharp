@@ -98,3 +98,8 @@ C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin
 C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\obj\Debug\net8.0\MinimalApiCSharp.csproj.AssemblyReference.cache
 C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\obj\Debug\net8.0\MinimalA.662F0EE4.Up2Date
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\obj\Debug\net8.0\MinimalApiCSharp.MvcApplicationPartsAssemblyInfo.cs
