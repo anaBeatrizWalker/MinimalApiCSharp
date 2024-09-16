@@ -33,7 +33,7 @@ namespace MinimalApiCSharp.Infra.DB
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured){
-                var connectionString = _configAppSettings.GetConnectionString("mysql")?.ToString();
+                var connectionString = _configAppSettings.GetConnectionString("Mysql")?.ToString();
 
                 if(!string.IsNullOrEmpty(connectionString))
                 {

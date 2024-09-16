@@ -103,3 +103,11 @@ C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin
 C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\obj\Debug\net8.0\MinimalApiCSharp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\anabi\OneDrive\Documentos\DIO - Bootcamp .NET e C#\MinimalApiCSharp\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
