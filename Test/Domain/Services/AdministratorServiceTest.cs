@@ -68,7 +68,7 @@ namespace Test.Domain.Services
             var newAdm = administratorService.GetById(adm.Id);
             
             //Assert (validações)
-            Assert.AreEqual(1, newAdm.Id);
+            Assert.AreEqual(1, newAdm?.Id);
         }
     }
 }
